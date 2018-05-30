@@ -11,7 +11,7 @@ module MoviesHelper
     if movie.image_file_name.blank?
       image_tag('placeholder.png')
     else
-      image_tag(movie.image_file_name)
+      image_tag(movie.image_file_name, size: "88x120")
     end
   end
   
