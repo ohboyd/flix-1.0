@@ -19,24 +19,23 @@ ActiveRecord::Schema.define(version: 20180525221435) do
     t.string   "title"
     t.string   "rating"
     t.decimal  "total_gross"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",      :null=>false
+    t.datetime "updated_at",      :null=>false
     t.text     "description"
     t.date     "released_on"
     t.string   "cast"
     t.string   "director"
     t.string   "duration"
-    t.string   "image_file_name", default: ""
+    t.string   "image_file_name", :default=>""
   end
 
   create_table "reviews", force: :cascade do |t|
     t.string   "name"
     t.integer  "stars"
     t.text     "comment"
-    t.integer  "movie_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
+    t.integer  "movie_id",   :foreign_key=>{:references=>"movies", :name=>"fk_reviews_movie_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"fk__reviews_movie_id", :using=>:btree}
+    t.datetime "created_at", :null=>false
+    t.datetime "updated_at", :null=>false
   end
 
 end

@@ -54,3 +54,5 @@ end
 group :test do
   gem "capybara", "2.7.1"
 end
+
+gem "schema_auto_foreign_keys"   
